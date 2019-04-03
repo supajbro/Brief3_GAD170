@@ -1,0 +1,27 @@
+Take note of the layers used on objects, these will determine what can be interacted with and what can be walked over.
+Take note of the tags on objects, these are used in a number of places to determine if objects match or otherwise meet some predefined condition.
+
+InteractiveItem is meant to be inherited from to create custom item behaviour when used, alternatively it could have its events routed to other scripts to cause the same results.
+It is intended only for use of relatively straightforward objects, static that can or cannot be picked up and dynamic rigid bodies that can be picked up and thrown. It expects the collider and interactive item script to be connected either by gameobject or rb. Complex object hierarchies with multiple rigidbodies, such as ragdolls, have not been tested and will probably not work.
+
+Physics router is used in a number of places to trigger sound effects and on the Hoop trigger volume to notify the task that a ‘basket’ has been scored.
+
+CheckListItem must be inherited to create new tasks for the player to complete, these are presently on their own GO, under the game rules object and need to be manually added to the CheckList in the scene to show up on the board.
+
+Using the same GameEvents setup as previous frameworks for consistency, as noted in comments on the class, this will need to evolve soon.
+
+The SweepMover is relatively simple and if you would rather replace it with a different freely available controller feel free, you will need to ensure PlayerInteraction script still works though.
+
+AudioEffectSO used for basic sfx variation.
+
+
+Recommended activities; 
+-sfxs on the pins and on the buttons on the bowling lane, have a look at the basketball for an example of one way to acheive this.
+-Work through recreating the ball out of bounds checklistitem that you may have seen in the example in class. This will require a new class that inherits from CheckListItem and listens to the GameEvents.OnObjectReset
+-Trigger creation or perhaps an animation when the player or a key object is played in a certain area to allow progress to continue. You could even do an approximation of weigth balance puzzle or a collect'em'up.
+
+If you wish to recreate something akin to the nerf gun, there is a class stub to look into. you will need to manage the fire rate with some kind of timer, Instantiate from the prefab and initialise its position, orientation and velocity
+
+If you wish to recreate something akin to the bowling lane, there is a class stub to look into. You'll need to create pins, keep track of them in a collection and determine if a pin is 'knocked over' or not when scoring. This will then also require the creation of a new GameEvent to route info to a new checklistitem
+
+You should also be considering new interactions and tasks for your game that you will need to map out and discuss with your peers and facilitator for apporval. This does not have to be limited to checklistitems, it can be new events, new results from combinations of events or interactions or new custom item behaviours.
